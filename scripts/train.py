@@ -14,6 +14,12 @@ import torch.optim as optim
 # Project code
 from fraudDetection import FraudDetectionModel, train_model, TrainConfig, CreditCardFraudDataset
 
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+
 config = TrainConfig(
     batch_size=64,
     epochs=50,
@@ -41,7 +47,8 @@ if __name__ == '__main__':
 
     # Configure model
     input_size = dataset.features.shape[1]  # Determine the number of features dynamically
-    model = FraudDetectionModel(input_size=input_size)
+    # model = FraudDetectionModel(input_size=input_size)
+    model = LogisticRegression()
 
     # Loss and optimizer
     criterion = nn.BCELoss()  # Changed to BCELoss for binary classification
