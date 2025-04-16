@@ -26,7 +26,7 @@ model_random_forest = RandomForestClassifier()
 model_svm = SVC(probability=True)
 
 ####
-model = model_logistic_regression # change model here
+model = model_svm # change model here
 ####
 
 model.fit(X_train, y_train)

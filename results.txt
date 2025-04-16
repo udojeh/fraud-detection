@@ -1,0 +1,79 @@
+-Logistic Regression-
+Accuracy: 0.9982
+Precision: 0.9680
+Recall: 0.8618
+F1-score: 0.9118
+AUPRC: 0.9193
+
+Top 10 most relevant features:
+   Feature  Importance
+3       V4    2.376649
+13     V14    2.365543
+11     V12    1.744938
+7       V8    1.447278
+9      V10    1.047009
+10     V11    0.923021
+15     V16    0.621731
+6       V7    0.579844
+26     V27    0.558874
+2       V3    0.509725
+
+-Decision Tree-
+Accuracy: 0.9980
+Precision: 0.8998
+Recall: 0.9126
+F1-score: 0.9062
+AUPRC: 0.8221
+
+Top 10 most relevant features:
+   Feature  Importance
+16     V17    0.670272
+13     V14    0.103365
+9      V10    0.062442
+25     V26    0.015868
+0       V1    0.015091
+23     V24    0.012102
+3       V4    0.011924
+6       V7    0.010044
+15     V16    0.009585
+20     V21    0.008911
+
+-Random Forest-
+Accuracy: 0.9988
+Precision: 0.9844
+Recall: 0.9004
+F1-score: 0.9406
+AUPRC: 0.9630
+
+Top 10 most relevant features:
+   Feature  Importance
+16     V17    0.205837
+13     V14    0.161764
+9      V10    0.130345
+11     V12    0.095081
+10     V11    0.077235
+15     V16    0.050647
+3       V4    0.039059
+8       V9    0.031908
+2       V3    0.029760
+17     V18    0.028890
+
+-SVM-
+Accuracy: 0.9987
+Precision: 0.9822
+Recall: 0.8984
+F1-score: 0.9384
+AUPRC: 0.9774
+
+
+Top 10 Overall feature importances 
+V14 2.630672
+V4 2.427632
+V12 1.840019
+V8 1.447278
+V10 1.239796
+V11 1.000256
+V17 0.876109
+V16 0.681963
+V7 0.5898880000000001
+V27 0.558874
