@@ -3,7 +3,7 @@ from torch import no_grad
 from torch.utils.data import DataLoader
 import torch.nn as nn
 import torch
-from sklearn.metrics import precision_score, recall_score, f1_score, classification_report
+from sklearn.metrics import precision_score, recall_score, f1_score, classification_report, average_precision_score
 from .device import init_device
 
 @dataclass
@@ -26,6 +26,7 @@ def test_model(
         test_loss = 0.0
         y_true = []  # Stores actual labels
         y_pred = []  # Stores model predictions
+        y_raw_output = [] # Raw output probabilities before thresholding
 
         correct = 0
         total = 0
@@ -43,6 +44,7 @@ def test_model(
                 # Stores predictions and actual values
                 y_true.extend(y_batch.cpu().tolist())  
                 y_pred.extend(predicted.cpu().tolist())
+                y_raw_output.extend(outputs.cpu().tolist())
 
                 total += y_batch.size(0)
                 correct += (predicted == y_batch).sum().item()
@@ -55,10 +57,12 @@ def test_model(
         precision = precision_score(y_true, y_pred)
         recall = recall_score(y_true, y_pred)
         f1 = f1_score(y_true, y_pred)
+        auprc = average_precision_score(y_true, y_raw_output)
 
         # Prints results
         print(f"Test Loss: {avg_loss:.4f}")
         print(f"Precision: {precision:.4f}")
         print(f"Recall: {recall:.4f}")
         print(f"F1-score: {f1:.4f}")
+        print(f"AUPRC (Area Under Precision-Recall Curve): {auprc:.4f}")
         print(f"Final Accuracy: {100 * correct / total:.2f}%")

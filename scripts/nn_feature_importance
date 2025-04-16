@@ -1,0 +1,39 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+import torch
+import numpy as np
+import pandas as pd
+from fraudDetection import FraudDetectionModel, CreditCardFraudDataset
+from torch.utils.data import DataLoader
+
+# Load dataset
+dataset = CreditCardFraudDataset("dataset/creditcard_realistic.csv", train=False)
+data_loader = DataLoader(dataset, batch_size=1, shuffle=False)
+
+# Loads model
+input_size = dataset.features.shape[1]
+model = FraudDetectionModel(input_size)
+model.load("models/real")  # replace with your model name
+model.eval()
+
+feature_names = dataset.feature_names
+importance_scores = np.zeros(input_size)
+
+for X_batch, _ in data_loader:
+    X_batch.requires_grad = True
+    output = model(X_batch)
+    output.backward()  # computes gradients
+    gradients = X_batch.grad.abs().detach().numpy()
+    importance_scores += gradients[0]  # sums gradients over dataset
+
+# Averages absolute gradient for each feature over all test samples and normalizes them
+importance_scores /= len(dataset)
+importance_dictionary = dict(zip(feature_names, importance_scores))
+sortedImportance = dict(sorted(importance_dictionary.items(), key=lambda x: x[1], reverse=True))
+
+# Displays top features
+print("Top 10 most relevant features:")
+for feature, score in list(sortedImportance.items())[:10]:
+    print(f"{feature}: {score:.6f}")
