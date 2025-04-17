@@ -2,6 +2,20 @@
 
 We are using the **Credit Card Fraud Detection Dataset 2023** dataset for this project.
 
+# HOW TO RUN 
+
+   1. Make sure to only run the files under the 'scripts' folder. 
+   2. If you wish to train a neural network, run train.py. If you wish to test a neural network, run test.py
+   3. When training or testing a neural network, make sure that the dataset is the one you want to use. 
+         This can be changed in line 31 of train.py, and line 21 of test.py.
+   4. When testing a neural network model, be sure to change the model path to the appropriate name in line 16 of test.py (models/(insert_model_name_here_no_brackets)).
+         The list of model names (pre-existing and the ones you created) can be found inside the models folder
+   5. For the rest of the models, training and testing is done by running rq2.py (Change the model in line 29).
+   6. Feature importance is automatically calculated when you train and test every model except for SVM (Not applicable) and the Feedforward Neural Network (FFNN)
+   7. To calculate feature importance for the FFNN, run nn_feature_importance.py with the appropriate dataset and model.
+   8. There are two pre-existing FFNN models under models already. real was trained using the realistic dataset, noundersample was trained using the original dataset.
+
+
 To contribute to this project, follow the steps below:
 
 1. Download and Install Anaconda3 if you haven't already.

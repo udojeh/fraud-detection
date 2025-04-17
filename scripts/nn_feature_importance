@@ -9,13 +9,13 @@ from fraudDetection import FraudDetectionModel, CreditCardFraudDataset
 from torch.utils.data import DataLoader
 
 # Load dataset
-dataset = CreditCardFraudDataset("dataset/creditcard_realistic.csv", train=False)
+dataset = CreditCardFraudDataset("dataset/creditcard_2023.csv", train=False)
 data_loader = DataLoader(dataset, batch_size=1, shuffle=False)
 
 # Loads model
 input_size = dataset.features.shape[1]
 model = FraudDetectionModel(input_size)
-model.load("models/real")  # replace with your model name
+model.load("models/noundersample")  # replace with your model name
 model.eval()
 
 feature_names = dataset.feature_names

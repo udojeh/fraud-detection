@@ -10,7 +10,7 @@ from fraudDetection import CreditCardFraudDataset
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score, average_precision_score
 
-dataset = CreditCardFraudDataset(file_path="dataset/creditcard_realistic.csv", train=True)
+dataset = CreditCardFraudDataset(file_path="dataset/creditcard_2023.csv", train=True)
 X = dataset.features
 y = dataset.labels
 feature_names = dataset.feature_names

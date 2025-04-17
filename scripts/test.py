@@ -13,12 +13,12 @@ from fraudDetection import FraudDetectionModel, test_model, TestConfig, CreditCa
 
 # Define model path
 config = TestConfig(
-    model_path="models/real"  # Update model name appropriately, if your saved model is called cool, models/cool should be in quotation marks
+    model_path="models/noundersample"  # Update model name appropriately, if your saved model is called cool, models/cool should be in quotation marks
 )
 
 if __name__ == '__main__':
     # Load the dataset
-    dataset = CreditCardFraudDataset(file_path="dataset/creditcard_realistic.csv", train=False) # make sure dataset is correct before running
+    dataset = CreditCardFraudDataset(file_path="dataset/creditcard_2023.csv", train=False) # make sure dataset is correct before running
     data_loader = DataLoader(
         dataset=dataset,
         batch_size=64,

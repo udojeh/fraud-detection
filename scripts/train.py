@@ -28,7 +28,7 @@ config = TrainConfig(
 
 if __name__ == '__main__':
     # Load the dataset and split it for validation
-    dataset = CreditCardFraudDataset(file_path="dataset/creditcard_realistic.csv", train=True) # make sure dataset is correct before running
+    dataset = CreditCardFraudDataset(file_path="dataset/creditcard_2023.csv", train=True) # make sure dataset is correct before running
     train_indices, val_indices = train_test_split(np.arange(len(dataset)), test_size=0.2, random_state=42)
 
     train_dataset = Subset(dataset, train_indices)
@@ -47,8 +47,8 @@ if __name__ == '__main__':
 
     # Configure model
     input_size = dataset.features.shape[1]  # Determine the number of features dynamically
-    # model = FraudDetectionModel(input_size=input_size)
-    model = LogisticRegression()
+    model = FraudDetectionModel(input_size=input_size)
+    
 
     # Loss and optimizer
     criterion = nn.BCELoss()  # Changed to BCELoss for binary classification
